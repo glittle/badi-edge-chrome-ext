@@ -170,11 +170,11 @@
         "description": "about page"
     },
     "Chrome_WebStore": {
-        "message": "https://chrome.google.com/webstore/detail/bad%C3%AD-calendar/egekinjjpolponbbfjimifpgfdmphomp/",
+        "message": "https://sites.google.com/site/badicalendartools/home/web-extension/history?[webstore]/",
         "description": "link to Webstore when running in Chrome"
     },
     "Chrome_WebStoreSupport": {
-        "message": "https://chrome.google.com/webstore/detail/bad%C3%AD-calendar/egekinjjpolponbbfjimifpgfdmphomp/support",
+        "message": "https://sites.google.com/site/badicalendartools/home/web-extension/history?[webstore]/support",
         "description": "link to Webstore support link when running in Chrome"
     },
     "copied": {
