@@ -1,0 +1,11 @@
+﻿phraseapp:
+  project_id: "ff27c47569442cc984f4a9a522013c90"
+  file_format: "json" 
+  push:
+    sources:
+      - file: "./_locales/<locale_code>/messages.json"
+        params:
+            update_translations: true
+  pull:
+    targets:
+      - file: "./_locales/<locale_code>/messages.json"

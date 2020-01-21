@@ -1,0 +1,488 @@
+@import "colors.less";
+
+body[data-pageid=pageCalGreg].inTab {
+  #pageCalGreg {
+    .calendar {
+      max-height: none;
+    }
+  }
+
+  overflow-y: auto;
+}
+
+@borderWidth: 3px;
+
+.mornBorder(@color) {
+  border-color: @color;
+  border-left-width: @borderWidth;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 2px;
+  margin: 0 0 0 -(@borderWidth - 1px);
+  background-image: linear-gradient(to bottom, @color 60%, #ffffff 100%) !important;
+  //width: ~'calc(100% - 2px)';
+}
+
+.aftBorder(@color) {
+  background-color: lighten(@color,40%) !important;
+  margin: 0 0 0 -(@borderWidth - 1px);
+  border-left: @borderWidth solid @color;
+  border-right-color: @color;
+  //width: ~'calc(100% - 2px)';
+}
+
+.eveBorder(@color) {
+  border-right-color: @color;
+  border-bottom-color: @color;
+  border-left: none;
+  border-right-width: @borderWidth;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+  //width: ~'calc(100% - 2px)';
+  margin: 0 -(@borderWidth - 1px) 0 0;
+  background-image: linear-gradient(to top, @color 60%, #ffffff 100%) !important;
+}
+
+
+#pageCalGreg {
+
+  .calendar {
+    margin-left: 5px;
+    overflow: auto;
+    max-height: 497px;
+    position: relative;
+    padding: 5px 0 12px 9px;
+  }
+
+
+  .hdHS, .hdHO {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin: 0 2px -1px -2px;
+  }
+
+  .hdHS {
+    background: url(./star12d.gif);
+  }
+
+  .hdHO {
+    background: url(star12b.gif);
+  }
+
+  .hdName {
+    font-weight: bold;
+    font-size: 87%;
+    margin: -2px 0 0 3px;
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+
+
+  .month {
+    @cellWidth: 104px;
+
+    page-break-inside: avoid;
+    //border: solid 1px #ccc;
+    //border-radius: 2px;
+    display: flex;
+    flex-flow: wrap;
+    width: calc(7 * (@cellWidth + 4px));
+    //margin: 0 0 50px 2px;
+    .caption {
+      width: 100%;
+      font-size: 14pt;
+      font-weight: bold;
+      text-align: center;
+
+      span {
+        font-weight: normal;
+        padding-left: 20px;
+        font-size: 12pt;
+      }
+    }
+
+    .placeName {
+      font-size: 9pt;
+      padding-bottom: 3px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .colName {
+      text-align: center;
+      width: @cellWidth;
+      margin: 0 1px 1px 0;
+
+      .weekDay {
+        font-weight: bold;
+      }
+
+      border: solid 1px #ccc;
+    }
+
+
+    .gd, .outside {
+      width: @cellWidth + 2;
+      margin: 0 1px 1px 0;
+      cursor: pointer;
+    }
+
+    .gd {
+      .dayCell {
+        > div {
+          position: relative;
+        }
+
+        .morn {
+          color: #fff;
+          padding: 0 0 0 3px;
+          background-image: linear-gradient(to bottom, rgba(200,200,200, 0) 60%, rgba(255,255,255, 1) 100%);
+          border: 1px solid #ccc;
+          border-bottom: none;
+          border-top-left-radius: 2px;
+          border-top-right-radius: 2px;
+
+          .gDay {
+            position: absolute;
+            font-size: 8pt;
+            top: 0;
+            left: calc(50% - 7px);
+            border-radius: 3px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            //background-color: rgba(255,255,255,0.1);
+            min-width: 14px;
+            padding: 0 4px 2px 3px;
+            text-align: center;
+            color: #666;
+          }
+
+          .dDay {
+            position: absolute;
+            //font-weight: bold;
+            top: 0;
+            left: 1px;
+            font-size: 8pt;
+            border-bottom-right-radius: 3px;
+            border-top-left-radius: 2px;
+            padding: 0 4px 2px 3px;
+            background-color: rgba(255,255,255,0.4);
+            color: black;
+            width: 14px;
+            text-align: center;
+          }
+        }
+
+        .aft {
+          background-color: white;
+          z-index: 1;
+          border-right: 1px solid #ccc;
+          border-left: 1px solid #ccc;
+
+          .sunrise {
+            position: absolute;
+            right: 1px;
+            top: 0;
+            font-size: 6pt;
+          }
+
+          > div {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+          }
+
+          .sunset {
+            //float: right;
+            position: absolute;
+            bottom: 0;
+            right: 1px;
+            font-size: 6pt;
+          }
+        }
+
+        .eve {
+          background-image: linear-gradient(to top, rgba(200,200,200, 0) 60%, rgba(255,255,255, 1) 100%);
+          border: 1px solid #ccc;
+          border-bottom-left-radius: 2px;
+          border-bottom-right-radius: 2px;
+          border-top: none;
+
+          .monthName {
+            //float: left;
+            position: absolute;
+            bottom: 1px;
+            color: #fff;
+            left: 2px;
+            font-size: 9pt;
+            white-space: nowrap;
+            overflow: hidden;
+            max-width: 85%;
+
+            span {
+              font-size: .75em;
+              display: inline-block;
+              margin-left: 1px;
+              font-weight: normal;
+
+              &:before {
+                content: '\02026';
+              }
+            }
+
+            &.first {
+              font-weight: bold;
+            }
+
+            &.continuing::before {
+              content: '(';
+            }
+
+            &.continuing::after {
+              content: ')';
+            }
+          }
+
+          .sunset {
+            position: absolute;
+            right: 1px;
+            top: 0;
+            font-size: 7pt;
+            color: #fff;
+          }
+
+          .bDay {
+            position: absolute;
+            color: #fff;
+            font-size: 8pt;
+            bottom: 0;
+            right: 2px;
+            z-index: 1;
+          }
+        }
+      }
+
+      @hdBorderColor: red;
+
+      &.hdDayHS {
+        .morn {
+          .mornBorder(@hdBorderColor);
+        }
+
+        .aft {
+          .aftBorder(@hdBorderColor);
+        }
+      }
+
+      &.hdEveHS {
+        .eve {
+          //z-index: 2;
+          .eveBorder(@hdBorderColor);
+        }
+      }
+    }
+
+    .outside {
+      background-color: #fff;
+      color: #ddd;
+      border-color: #eee;
+      position: relative;
+
+      .gDay {
+        position: absolute;
+        font-size: 8pt;
+        top: 0;
+        left: calc(50% - 7px);
+        min-width: 14px;
+        padding: 0 4px 2px 3px;
+        text-align: center;
+        font-size: 8pt;
+      }
+    }
+  }
+
+  .bMonth0, .bMonth {
+    background-color: #fcfcfc;
+
+    span {
+      color: #4B0A66 !important;
+      // lighter yellow? dark text
+    }
+  }
+  //fire
+  .bMonth1, .bMonth3 {
+    background-color: @darkFire;
+
+    .gDay {
+      color: #333 !important;
+    }
+  }
+
+  .bMonth2 {
+    background-color: @darkFire2;
+
+    .bDay, .monthName {
+      color: #111 !important;
+    }
+
+    .gDay {
+      color: #666 !important;
+    }
+  }
+  //air
+  .bMonth4, .bMonth6 {
+    background-color: @darkAir;
+
+    .bDay, .monthName {
+      color: #000 !important;
+    }
+
+    .gDay {
+      color: #888 !important;
+    }
+  }
+
+  .bMonth5, .bMonth7 {
+    background-color: @darkAir2;
+
+    .bDay, .monthName {
+      color: #000 !important;
+    }
+
+    .gDay {
+      color: #777 !important;
+    }
+  }
+  //water
+  .bMonth8, .bMonth10, .bMonth12 {
+    background-color: @darkWater;
+
+    .gDay {
+      color: #333 !important;
+    }
+  }
+
+  .bMonth9, .bMonth11, .bMonth13 {
+    background-color: @darkWater2;
+  }
+  //earth
+  .bMonth14, .bMonth16, .bMonth18 {
+    background-color: @darkEarth;
+
+    .gDay {
+      color: #ddd !important;
+    }
+  }
+
+  .bMonth15, .bMonth17, .bMonth19 {
+    background-color: @darkEarth2;
+
+    .gDay {
+      color: #333 !important;
+    }
+  }
+}
+
+@media screen {
+  #pageCalGreg {
+    .gd.selected {
+      .morn {
+        .gDay {
+          font-weight: bold;
+        }
+      }
+    }
+
+
+    .month {
+      .gd {
+
+        .today {
+
+          &.morn {
+            .mornBorder(@todayBorderColor);
+          }
+
+          &.aft {
+            .aftBorder(@todayBorderColor);
+          }
+
+          &.eve {
+            //z-index: 2;
+            .eveBorder(@todayBorderColor);
+          }
+        }
+
+        .selected {
+
+          span {
+            color: #fff !important;
+          }
+
+          span.gDay {
+            color: #ccc !important;
+          }
+
+          &.morn {
+            .mornBorder(@bdayBorderColor);
+
+            .bDay {
+              font-weight: bold;
+            }
+          }
+
+          &.aft {
+            .aftBorder(@bdayBorderColor);
+
+            span {
+              color: #000 !important;
+            }
+          }
+
+          &.eve {
+            //z-index: 2;
+            .eveBorder(@bdayBorderColor);
+
+            .bDay {
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+
+    .eve {
+      margin-top: 0;
+    }
+  }
+}
+
+@media print {
+  @page {
+    margin: 15mm 15mm;
+  }
+
+  #pageCalGreg {
+    border: none;
+
+    .calendar {
+      max-height: none;
+    }
+
+    .month {
+      margin: 50px auto 0 auto;
+      page-break-after: always;
+      page-break-inside: avoid;
+      display: flex !important;
+    }
+  }
+
+  body[data-pageid="pageCalGreg"] {
+    .mainTop {
+      display: none;
+    }
+  }
+}
