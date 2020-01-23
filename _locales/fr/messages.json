@@ -64,11 +64,11 @@
         "description": "Arabic names of years in a Vahid, with leading , "
     },
     "Chrome_WebStore": {
-        "message": "https://sites.google.com/site/badicalendartools/home/web-extension/history?[webstore]/",
+        "message": "https://microsoftedge.microsoft.com/addons/detail/mimmeibbmbmedohmboefbnekccjgcfnc",
         "description": "link to Webstore when running in Edge"
     },
     "Chrome_WebStoreSupport": {
-        "message": "https://sites.google.com/site/badicalendartools/home/web-extension/history?[webstore]/support",
+        "message": "https://microsoftedge.microsoft.com/addons/detail/mimmeibbmbmedohmboefbnekccjgcfnc",
         "description": "link to Webstore support link when running in Edge"
     },
     "copied": {
